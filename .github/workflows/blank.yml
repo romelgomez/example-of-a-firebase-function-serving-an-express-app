@@ -33,4 +33,5 @@ jobs:
           emulators:start --inspect-functions 9000 &
           sleep 5
           curl localhost:5000
-
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
