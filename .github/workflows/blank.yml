@@ -19,11 +19,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: yarn global add firebase-tools
     - name: Firebase version
-    - run: firebase --version
+      run: firebase --version
     - name: Install project dependencies
-    - run: (cd functions && yarn)
+      run: (cd functions && yarn)
     - name: Build project
-    - run: (cd functions && yarn run build)
+      run: (cd functions && yarn run build)
     - name: Run DEV Server
       run: |
         firebase emulators:start --inspect-functions 9000 &
