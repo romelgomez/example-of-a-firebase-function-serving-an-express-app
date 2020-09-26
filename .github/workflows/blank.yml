@@ -18,6 +18,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: yarn global add firebase-tools
+    - name: Link firebase tools to the alias
+      run: alias firebase="`npm config get prefix`/bin/firebase"
     - name: Firebase version
       run: firebase --version
     - name: Install project dependencies
@@ -27,6 +29,6 @@ jobs:
     - name: Run DEV Server
       run: |
         firebase emulators:start --inspect-functions 9000 &
-        sleep 10
+        sleep 5
         curl localhost:5000
 
