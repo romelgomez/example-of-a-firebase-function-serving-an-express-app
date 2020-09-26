@@ -1,1 +1,3 @@
-(cd functions && yarn install)
+#!/bin/bash
+
+(cd functions && yarn)

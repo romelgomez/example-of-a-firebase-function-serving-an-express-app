@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Set algolia keys
 # 
 # @example: algolia_keys 11110000 00000111110000

@@ -1,1 +1,3 @@
-npm run build
+#!/bin/bash
+
+(cd functions && yarn run build)
