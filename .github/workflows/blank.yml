@@ -17,18 +17,20 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: yarn global add firebase-tools
-    - name: Link firebase tools to the alias
-      run: alias firebase="`npm config get prefix`/bin/firebase"
-    - name: Firebase version
-      run: firebase --version
+    # - run: yarn global add firebase-tools
+    # - name: Link firebase tools to the alias
+    #   run: alias firebase="`npm config get prefix`/bin/firebase"
+    # - name: Firebase version
+    #   run: firebase --version
     - name: Install project dependencies
       run: (cd functions && yarn)
     - name: Build project
       run: (cd functions && yarn run build)
     - name: Run DEV Server
-      run: |
-        firebase emulators:start --inspect-functions 9000 &
-        sleep 5
-        curl localhost:5000
+      uses: w9jds/firebase-action@master
+      with:
+        args: |
+          emulators:start --inspect-functions 9000 &
+          sleep 5
+          curl localhost:5000
 
