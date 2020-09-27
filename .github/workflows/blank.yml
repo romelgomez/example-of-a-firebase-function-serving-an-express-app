@@ -21,12 +21,3 @@ jobs:
       run: (cd functions && yarn)
     - name: Build project
       run: (cd functions && yarn run build)
-    - name: Run DEV Server
-      uses: w9jds/firebase-action@master
-      with:
-        args: |
-          emulators:start --inspect-functions 9000
-      env:
-        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-    - name: Request index.html
-      run: curl localhost:5000
